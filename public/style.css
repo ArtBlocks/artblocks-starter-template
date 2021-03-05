@@ -1,0 +1,23 @@
+nav {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: black;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.title {
+    color: white;
+    display: inline;
+    font-weight: bold;
+    font-family: 'Bungee Shade', cursive;
+    padding: 0px 16px 0px 0px;
+    font-size: 25px;
+}
+
+.dropdown {
+    display: inline;
+    padding: 0px 5px;
+}
+
+

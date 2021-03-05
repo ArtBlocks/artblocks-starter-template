@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
+    <title>Art Blocks Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script>
+      // Generates a random hash and token id each time you reload, in the following format
+      //let tokenData = {"hash":"0xd9134c11cd5ed9798ea0811364d63bd850c69c5d13383c9983ade39847e9ea86","tokenId":"99000000"};
+      
+      function genTokenData(projectNum)
+      {
+          let data = {};
+          let hash = "0x";
+          for (var i = 0; i < 64; i++)
+          {
+              hash += Math.floor(Math.random() * 16).toString(16);
+          }
+          data.hash = hash;
+          data.tokenId = projectNum * 1000000 + Math.floor(Math.random() * 1000);
+          return data;
+      }
+      let tokenData = genTokenData(99);
+    </script>
+    <script src="./js/p5.js"></script>
+  </head>
+  <body>
+    {{{body}}}
+  </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="./js/{{scriptName}}"></script>
+</html>

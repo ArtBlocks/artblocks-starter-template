@@ -1,0 +1,31 @@
+{
+  "name": "generativeartwork",
+  "version": "1.0.0",
+  "description": "Generative Artwork",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asupkay/GenerativeArtwork.git"
+  },
+  "author": "Alex Supkay, Stephen McArdle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Asupkay/GenerativeArtwork/issues"
+  },
+  "homepage": "https://github.com/Asupkay/GenerativeArtwork#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5"
+  }
+}

@@ -1,7 +1,13 @@
-# Art Blocks Getting Started Template
-***Note**: this is in no way affiliated with the Art Blocks company and is just a few developers trying to document resources that help them develop on the platform.*
+# Artblocks Starter Template
 
-## Getting Started
+### To run the app:
 
-1. Fork this repo
-2. run with `npm start`
+```
+$ npm install
+$ npm start
+```
+
+### To add a new piece:
+
+1. Create a new .js file in public/js
+2. Create a new nav link in views/main.hbs - Ensure the href value matches matches the filename (without the extension) exactly.
