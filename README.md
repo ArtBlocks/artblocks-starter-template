@@ -1,4 +1,5 @@
 # Artblocks Starter Template
+***Note**: This tool is not endorsed by Art Blocks and is maintained by people of the community*
 
 ### To run the app:
 
