@@ -2,16 +2,14 @@
 // This means 0xeca4cf6288eb455f388301c28ac01a8da5746781d22101a65cb78a96a49512c8
 // turns into ["ec", "a4", "cf", "62", "88", "eb", ...]
 const hashPairs = [];
-for (let i = 0; i < 1; i++) {
-     for (let j = 0; j < 32; j++) {
-          hashPairs.push(tokenData.hash.slice(2 + (j * 2), 4 + (j * 2)));
-     }
+for (let j = 0; j < 32; j++) {
+  hashPairs.push(tokenData.hash.slice(2 + (j * 2), 4 + (j * 2)));
 }
 
 // Parse the hash pairs into ints. Hash pairs are base 16 so "ec" becomes 236.
 // Each pair will become a value ranging from 0 - 255
 const decPairs = hashPairs.map(x => {
-     return parseInt(x, 16);
+  return parseInt(x, 16);
 });
 
 // Grab the first 16 values of the hash to use as a noise seed.
