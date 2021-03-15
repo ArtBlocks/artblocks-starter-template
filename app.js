@@ -1,6 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
-const fs = require('fs');
+const utils = require('./utils');
 
 const app = express();
 const port = 3000;
@@ -19,15 +19,15 @@ app.engine(
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.render('main');
+  res.render('main', {
+    pieces: utils.getPieces()
+  });
 });
 
 app.get('/:route', (req, res) => {
-  const files = fs.readdirSync('./public/js/pieces');
-  const pieces = files.map((file) => file.slice(0, -3))
   res.render('main', {
     scriptName: `${req.params.route}.js`,
-    pieces
+    pieces: utils.getPieces()
   });
 });
 
