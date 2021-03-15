@@ -1,13 +1,21 @@
 # Artblocks Starter Template
 ***Note**: This tool is maintained by people of the Art Blocks community and is not affiliated with Art Blocks*
 
-## Getting Started
+## Quick Start:
 
-### To run the app:
+Install the dependencies necessary to run the tool.
 
-1. Run `npm install`. This will install all the dependencies needed to run the tool.
-2. Run `npm start`. Will start up the server.
-3. Open up `localhost:3000` in your web browser of choice.
+```bash
+$ npm start
+```
+
+Start the server
+
+```bash
+$ npm start
+```
+
+View the tool at: http://localhost:3000
 
 ### To add a new piece:
 
