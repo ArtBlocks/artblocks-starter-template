@@ -5,7 +5,9 @@
         Pieces
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="example">Example</a>
+        {{#each pieces}}
+            <a class="dropdown-item" href={{this}}>{{this}}</a>
+        {{/each}}
       </div>
     </div>
     </div>

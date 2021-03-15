@@ -11,5 +11,6 @@ $ npm start
 ### To add a new piece:
 
 1. Create a new .js file in public/js
-2. Create a new nav link in views/main.hbs - Ensure the href value matches matches the filename (without the extension) exactly.
-3. Check out the example to see how to connect to the hash value! :)
+2. Restart the server by hitting CTRL-C and typing `npm start` again.
+3. Your JavaScript should show up in the pieces dropdown.
+4. Check out the example to see how to connect to the hash value! :)

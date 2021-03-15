@@ -1,5 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
+const fs = require('fs');
 
 const app = express();
 const port = 3000;
@@ -22,7 +23,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:route', (req, res) => {
-  res.render('main', { scriptName: `${req.params.route}.js` });
+  const files = fs.readdirSync('./public/js/pieces');
+  const pieces = files.map((file) => file.slice(0, -3))
+  res.render('main', {
+    scriptName: `${req.params.route}.js`,
+    pieces
+  });
 });
 
 app.get('*', (req, res) => {
