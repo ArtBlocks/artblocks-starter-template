@@ -17,7 +17,7 @@ $ npm start
 
 View the tool at: http://localhost:3000
 
-## Create A New Piece:
+## Creating A New Piece:
 
 1. Create a new .js file in `public/js/pieces/`
 2. Restart the server by hitting CTRL-C and typing `npm start` again.
