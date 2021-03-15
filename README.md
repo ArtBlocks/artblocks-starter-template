@@ -17,13 +17,14 @@ $ npm start
 
 View the tool at: http://localhost:3000
 
-### To add a new piece:
+## Create A New Piece:
 
-1. Create a new .js file in public/js
+1. Create a new .js file in `public/js/pieces/`
 2. Restart the server by hitting CTRL-C and typing `npm start` again.
 3. Refresh or navigate to `localhost:3000`.
 4. Your piece should show up in the pieces dropdown with the same name as the JavaScript file.
 5. Click the piece in the dropdown and you will be navigated to `localhost:3000/<piece name>` which should display your piece.
+6. At this point you can start modifying the JavaScript file you created to make your piece.
 
 ## FAQ
 
