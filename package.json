@@ -1,7 +1,7 @@
 {
-  "name": "generativeartwork",
-  "version": "1.0.0",
-  "description": "Generative Artwork",
+  "name": "artblocks-starter-template",
+  "version": "0.2.1",
+  "description": "A template to simulate the Art Blocks (artblocks.io) environment.",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
@@ -14,9 +14,9 @@
   "author": "Alex Supkay, Stephen McArdle",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Asupkay/GenerativeArtwork/issues"
+    "url": "https://github.com/Asupkay/Artblocks-Starter-Template/issues"
   },
-  "homepage": "https://github.com/Asupkay/GenerativeArtwork#readme",
+  "homepage": "https://github.com/Asupkay/Artblocks-Starter-Template#readme",
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
