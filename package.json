@@ -19,7 +19,8 @@
   "homepage": "https://github.com/Asupkay/GenerativeArtwork#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.4"
+    "express-handlebars": "^4.0.4",
+    "markdown-it": "^12.0.4"
   },
   "devDependencies": {
     "eslint": "^7.3.1",

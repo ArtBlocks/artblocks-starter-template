@@ -1,0 +1,17 @@
+<nav style="margin-bottom: 10px">
+    <a class="title-link" href="/">
+        <div class="title">Art Blocks Tester</div>
+    </a>
+    <div class="dropdown">
+      <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Pieces
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {{#each pieces}}
+            <a class="dropdown-item" href={{this}}>{{this}}</a>
+        {{/each}}
+      </div>
+    </div>
+    </div>
+</nav>
+

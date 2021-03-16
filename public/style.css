@@ -20,4 +20,6 @@ nav {
     padding: 0px 5px;
 }
 
-
+.title-link:hover {
+    text-decoration: none;
+}
