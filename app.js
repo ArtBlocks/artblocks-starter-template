@@ -4,7 +4,7 @@ const utils = require('./utils');
 const md = require('markdown-it')();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.set('view engine', 'hbs');
 app.engine(
@@ -40,5 +40,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('Server running on port 3000');
+  console.log(`Server running on port ${port}`);
 });
