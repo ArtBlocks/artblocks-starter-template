@@ -1,5 +1,5 @@
 {
-  "name": "artblocks-starter-template",
+  "name": "art-blocks-starter-template",
   "version": "0.2.1",
   "description": "A template to simulate the Art Blocks (artblocks.io) environment.",
   "main": "app.js",
