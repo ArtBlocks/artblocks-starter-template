@@ -1,4 +1,4 @@
-# Artblocks Starter Template
+# Art Blocks Starter Template
 ***Note**: This tool is maintained by people of the Art Blocks community and is not affiliated with Art Blocks*
 
 ## Quick Start:

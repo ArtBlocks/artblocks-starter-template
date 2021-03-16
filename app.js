@@ -23,15 +23,15 @@ app.get('/', (req, res) => {
   const readme = md.render(utils.getReadme());
   
   res.render('main', {
-    pieces: utils.getPieces(),
+    ...utils.getNavAttributes(),
     readme
   });
 });
 
 app.get('/:route', (req, res) => {
   res.render('piece', {
-    scriptName: `${req.params.route}.js`,
-    pieces: utils.getPieces()
+    ...utils.getNavAttributes(),
+    scriptName: `${req.params.route}.js`
   });
 });
 
