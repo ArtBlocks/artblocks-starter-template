@@ -3,7 +3,7 @@
 
 ## Quick Start:
 
-This runs on Node with some dependencies. Download, unzip and then go to the folder where `package.json` is and run `npm install` to install the dependencies necessary to run the tool.
+This runs on Node with some dependencies. Download or clone the repo, navigate into the directory, and run npm install:
 
 ```bash
 $ npm install
