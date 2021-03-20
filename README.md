@@ -3,10 +3,10 @@
 
 ## Quick Start:
 
-Install the dependencies necessary to run the tool.
+This runs on Node with some dependencies. Download, unzip and then go to the folder where `package.json` is and run `npm install` to install the dependencies necessary to run the tool.
 
 ```bash
-$ npm start
+$ npm install
 ```
 
 Start the server
