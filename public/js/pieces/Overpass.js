@@ -23,7 +23,10 @@ const rColor = decPairs[28];
 const gColor = decPairs[29];
 const bColor = decPairs[30];
 
+const waterSeed = decPairs[0];
+
 function setup() {
+  //#region Setup
   // Grab the smaller of the window sizes and use that as the canvas size.
   const smallerDimension = windowWidth < windowHeight ? windowWidth : windowHeight;
   createCanvas(smallerDimension, smallerDimension);
@@ -32,45 +35,57 @@ function setup() {
   noiseSeed(seed);
 
   // Create the variable values.
-  const numCircles = 50;
   const padding = width/25;
 
   // Define the grid area as the width of the canvas minus the padding.
   const gridArea = width - padding;
 
+  // Colors
+  var backgroundColors = ["#a4aa79"];
+
   // Move to the center of the canvas and draw a square that encompasses the canvas.
   push();
   translate(width/2, width/2);
   rectMode(CENTER)
+  noStroke();
+  fill("#a4aa79"); //Green
   square(0,0,width - padding/2);
   pop();
 
   // Account for the padding and define the size of each cell in the grid.
-  translate(padding/2, padding/2);
-  const cellSize = gridArea/(numCircles + 1);
 
-  // Set the circle fill color.
-  fill(rColor, gColor, bColor);
-
-  // Set the strokeWeight by turning the 0 - 255 value into a 0 - 5 value.
-  strokeWeight(map(lineThickness, 0, 255, 0, 5));
-
-  // Loop through each cell in the grid and place an ellipse.
-  let xOff = 0;
-  for(let x = 0; x < numCircles; x++) {
-    let yOff = 0;
-    for(let y = 0; y < numCircles; y++) {
-      // Set the ellipse size based on noise.
-      const ellipseSize = map(noise(xOff, yOff), 0, 1, 0, cellSize);
-
-      // Create the ellipse.
-      ellipse(cellSize * (x + 1), cellSize * (y + 1), ellipseSize, ellipseSize);
-      yOff += .1;
-    }
-    xOff += .1;
-  }
+  //#endregion Setup
+  let waterSeed = seed;
+  drawWater(height-padding/4, width-padding/4, padding/4, "#93b3c4", waterSeed);
 }
 
 function draw() {
 
+}
+
+function drawWater(height, width, padding, color, seed) {
+  fill(color); //dark blue
+  noStroke();
+  var x1 = width;
+  var y1 = height;
+  var x2 = width;
+  var y2 = height;
+  var x3 = width;
+  var y3 = height;
+
+  if(waterSeed > 128) {
+    x1 = padding;
+    y2 = height;
+    x3 = padding;
+    y1 = height - decPairs[1];
+    x2 = padding + decPairs[1];
+    y3 = height;
+  } else {
+    x3 = width - decPairs[1];
+    y2 = height - decPairs[1];
+  }
+  triangle(x1, x2,
+      x2, y2,
+      x3, y3);
+      curve(5, 26, 73, 24, 73, 61, 15, 65);
 }

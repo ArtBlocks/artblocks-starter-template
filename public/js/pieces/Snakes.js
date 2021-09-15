@@ -54,21 +54,37 @@ function setup() {
 
   // Set the strokeWeight by turning the 0 - 255 value into a 0 - 5 value.
   strokeWeight(map(lineThickness, 0, 255, 0, 5));
+  // Define the curve points as JavaScript objects
+  let v = 20;
+  noStroke();
 
-  // Loop through each cell in the grid and place an ellipse.
-  let xOff = 0;
-  for(let x = 0; x < numCircles; x++) {
-    let yOff = 0;
-    for(let y = 0; y < numCircles; y++) {
-      // Set the ellipse size based on noise.
-      const ellipseSize = map(noise(xOff, yOff), 0, 1, 0, cellSize);
+  while (v + 65 < height){
+    v += 10;
+    let p1 = { x: 0, y: 26 + v};
+    let p2 = { x: 73, y: 24 + v };
+    let p3 = { x: 130, y: 61 + v};
+    let p4 = { x: 255, y: 65 + v};
+    let p5 = { x: 280, y: 10 + v};
+    let p6 = { x: 350, y: 85 + v};
+    let p7 = { x: 450, y: 10 + v};
+    let p8 = { x: width, y: 10 + v};
+ //   rotate(PI/3/decPairs[0]-decPairs[2]*decPairs[5]);
+    let res = 10;
+    drawSnake(p1,p2,p3,p4, res);
+    drawSnake(p4,p5,p6,p7, res);
 
-      // Create the ellipse.
-      ellipse(cellSize * (x + 1), cellSize * (y + 1), ellipseSize, ellipseSize);
-      yOff += .1;
-    }
-    xOff += .1;
   }
+}
+
+function drawSnake(p1, p2, p3, p4, res) {
+
+  curve(p1.x, p1.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+  curve(p1.x-res, p1.y+res, p1.x-res, p1.y+res, p2.x-res, p2.y+res, p3.x-res, p3.y+res);
+  stroke(0)
+  curve(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, p4.x, p4.y);
+  curve(p1.x-res, p1.y+res, p2.x-res, p2.y+res, p3.x-res, p3.y+res, p4.x-res, p4.y+res);
+  curve(p2.x, p2.y, p3.x, p3.y, p4.x, p4.y, p4.x, p4.y);
+  curve(p2.x-res, p2.y+res, p3.x-res, p3.y+res, p4.x-res, p4.y+res, p4.x-res, p4.y+res);
 }
 
 function draw() {
