@@ -70,7 +70,6 @@ function setup() {
     let p8 = { x: width, y: 10 + v};
  //   rotate(PI/3/decPairs[0]-decPairs[2]*decPairs[5]);
     let res = 10;
-    drawSnake(p1,p2,p3,p4, res);
     drawSnake(p4,p5,p6,p7, res);
 
   }
