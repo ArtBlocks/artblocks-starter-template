@@ -1,95 +1,101 @@
-﻿let camera, scene, renderer;
-let geometry, material, mesh;
-let pink =  new THREE.Color(0xecb4b2);
-let green = new THREE.Color(0x849394);
-let blue = new THREE.Color(0x8abed7);
-let yellow = new THREE.Color(0xf0edb2);
-let black = new THREE.Color(0x383838);
-let white = new THREE.Color(0xfffff);
+// Turn the hash into hash pairs.
+// This means 0xeca4cf6288eb455f388301c28ac01a8da5746781d22101a65cb78a96a49512c8
+// turns into ["ec", "a4", "cf", "62", "88", "eb", ...]
+const hashPairs = [];
+for (let j = 0; j < 32; j++) {
+  hashPairs.push(tokenData.hash.slice(2 + (j * 2), 4 + (j * 2)));
+}
 
-class CustomSinCurve extends THREE.Curve {
+// Parse the hash pairs into ints. Hash pairs are base 16 so "ec" becomes 236.
+// Each pair will become a value ranging from 0 - 255
+const decPairs = hashPairs.map(x => {
+  return parseInt(x, 16);
+});
 
-    constructor( scale = 1 ) {
+// Grab the first 16 values of the hash to use as a noise seed.
+const seed = parseInt(tokenData.hash.slice(0, 16), 16);
 
-        super();
+let numShapes = 0;
 
-        this.scale = scale;
+function setup() {
+  // Grab the smaller of the window sizes and use that as the canvas size.
+  const smallerDimension = windowWidth < windowHeight ? windowWidth : windowHeight;
+  createCanvas(smallerDimension, smallerDimension);
 
+  // See the noise value.
+  noiseSeed(seed);
+
+  const padding = width/25;
+
+  // Define the grid area as the width of the canvas minus the padding.
+  const gridArea = width - padding;
+
+  let total;
+  for (let i = 0; i < decPairs.length; i++) {
+    if (decPairs[i] > 128) {
+      numShapes++;
     }
+    total += decPairs[i];
 
-    getPoint( t, optionalTarget = new THREE.Vector3() ) {
+  }
 
-        const tx = t - 1.5;
-        const ty = t - 1.5;
-        const tz = 0;
+  let mean = total / decPairs.length;
+  let std = getStandardDeviation(decPairs, mean); 
+  numShapes = numShapes/2;
+  noStroke();
+  // Move to the center of the canvas and draw a square that encompasses the canvas.
+  push();
+  translate(width/2, width/2);
+  rectMode(CENTER)
+  square(0,0,width - padding/2);
+  pop();
+  
+  // Account for the padding and define the size of each cell in the grid.
+  translate(padding/2, padding/2);
+  const cellSize = gridArea/(numShapes + 1);
+  for(let i = 0; i < numShapes; i++) {
+    rectangle(width/4*(noise(width/2)), height*(noise(width/2)),
+        Math.abs(decPairs[i]-(width/2*Math.abs(randomGaussian(mean, std)))), Math.abs(height-(height*(noise(i)))), TWO_PI/Math.abs(randomGaussian(mean, std)), decPairs[i]);
+  }
+}
 
-        return optionalTarget.set( tx, ty, tz ).multiplyScalar( this.scale );
-
-    }
+function draw() {
 
 }
 
-init();
-
-function init() {
-    scene = new THREE.Scene();
-    
-    camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
-    camera.position.z = 5;
-    
-    renderer = new THREE.WebGLRenderer({antialias: true});
-    renderer.setClearColor("#e5e5e5");
-    renderer.setSize(window.innerWidth,window.innerHeight);
-    
-    document.body.appendChild(renderer.domElement);
-    
-    geometry = new THREE.BoxGeometry(1, 1.5, .2);
-    material = new THREE.MeshLambertMaterial({color:pink});
-    
-    window.addEventListener('resize', () => {
-        renderer.setSize(window.innerWidth,window.innerHeight);
-        camera.aspect = window.innerWidth / window.innerHeight;
-    
-        camera.updateProjectionMatrix();
-    })
-    
-    let mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = 0;
-    mesh.position.y = 0;
-    mesh.position.z = 0;
-    mesh.rotateZ(10);
-    scene.add(mesh);
-
-    const path2 = new CustomSinCurve( .4 );
-    const geometry2 = new THREE.TubeGeometry( path2, 100, .05, 8, false );
-    const material2 = new THREE.MeshBasicMaterial( { color: black } );
-    const mesh2 = new THREE.Mesh( geometry2, material2 );
-    scene.add( mesh2 );
-    
-    let light = new THREE.PointLight(0xFFFFFF, .5, 1000)
-    light.position.set(0,0,0);
-    scene.add(light);
-    
-    light = new THREE.PointLight(0xFFFFFF, 1, 1000)
-    light.position.set(15,0,25);
-    scene.add(light);
-    let animation =
-        function( time ) {
-
-            mesh.rotation.z = time / 5000;
-            mesh.rotation.y = time / 5000;
-
-            renderer.render( scene, camera );
-        }
-        
-    let render = function() {
-        requestAnimationFrame(render);
-        renderer.setAnimationLoop( animation );
-    }
-    
-    render();
+function rectangle(x,y,w,h,angle, color) {
+  console.log(x + " " + y + " " + w + " " + h + " " + angle + " ");
+  while(y+h>width) {
+    y--;
+  } 
+  while(y+w>width) {
+    y--;
+  }
+  while(y+w>height) {
+    y--;
+  }
+  while(x+h>height) {
+    h--;
+  }
+  while(x+w>width) {
+    w--;
+  }
+  while(x+h>width) {
+    w--;
+  }
+  while(x+w>height) {
+    w--;
+  }
+  
+  beginShape();
+  fill(color);
+  translate(width/4,0);
+  rect(x,y,w/2,h);
+  rotate(PI/angle);
+  endShape();
 }
 
-
-
-
+function getStandardDeviation (array, mean) {
+  const n = array.length
+  return Math.sqrt(array.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n)
+}
