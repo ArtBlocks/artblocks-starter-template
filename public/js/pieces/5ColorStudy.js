@@ -65,28 +65,16 @@ function draw() {
 
 function rectangle(x,y,w,h,angle, color) {
   console.log(x + " " + y + " " + w + " " + h + " " + angle + " ");
-  while(y+h>width) {
-    y--;
-  } 
-  while(y+w>width) {
+  while(y+h>width || y+w > width || y+w>height || y+h>height) {
     y--;
   }
-  while(y+w>height) {
-    y--;
-  }
-  while(x+h>height) {
+  while(x+h>height || x+h>width) {
     h--;
   }
-  while(x+w>width) {
+  while(x+w>height || x+w>width) {
     w--;
   }
-  while(x+h>width) {
-    w--;
-  }
-  while(x+w>height) {
-    w--;
-  }
-  
+   
   beginShape();
   fill(color);
   translate(width/4,0);
