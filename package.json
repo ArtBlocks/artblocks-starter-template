@@ -19,7 +19,7 @@
   "homepage": "https://github.com/Asupkay/Artblocks-Starter-Template#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.4",
+    "express-handlebars": "^6.0.3",
     "markdown-it": "^12.0.4"
   },
   "devDependencies": {
