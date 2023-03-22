@@ -1,4 +1,6 @@
 # Art Blocks Starter Template
+[![GitPOAPs](https://public-api.gitpoap.io/v1/repo/ArtBlocks/artblocks-starter-template/badge)](https://www.gitpoap.io/gh/ArtBlocks/artblocks-starter-template)
+
 ***Note**: This tool is maintained by people of the Art Blocks community and is not affiliated with Art Blocks*
 
 ## Quick Start:
